@@ -124,13 +124,17 @@ function statusUpdated(status: StatusResource) {
 
 <template>
     <Transition>
-        <div v-show="!deleted" ref="rootEl" class="card status mb-3 position-relative">
+        <div
+            v-show="!deleted"
+            ref="rootEl"
+            class="card status mb-4 shadow-sm position-relative border-0 rounded-2xl overflow-hidden bg-base-100"
+        >
             <div v-if="showMap" class="card-img-top">
                 <div id="activeJourneys" class="statusMap embed-responsive">
                     <Map :statuses="[statusObject]" />
                 </div>
             </div>
-            <div class="card-body row">
+            <div class="card-body row p-4">
                 <!-- Big profile picture -->
                 <div class="col-2 image-box pe-0 d-none d-lg-flex">
                     <a :href="`/@${statusObject.userDetails.username}`">
@@ -186,7 +190,7 @@ function statusUpdated(status: StatusResource) {
 
             <!-- delete loading overlay -->
             <Transition name="delete-overlay">
-                <div v-if="deleting" class="delete-overlay">
+                <div v-if="deleting" class="delete-overlay backdrop-blur-sm">
                     <div class="spinner-border text-secondary" role="status">
                         <span class="visually-hidden">Loading</span>
                     </div>
