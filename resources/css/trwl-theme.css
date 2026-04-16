@@ -3,11 +3,17 @@
   prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
   color-scheme: dark; /* color of browser-provided UI */
 
-  --color-primary: #811a0e;
-  --color-base-100: oklch(0.25 0.009 264.318);
-  --color-base-200: oklch(0.21 0.009 264.318);
-  --color-base-300: oklch(0.177 0.009 264.318);
-  --color-secondary: #3b71ca;
+  --color-primary: #e11d48; /* More vibrant red/rose */
+  --color-primary-content: #ffffff;
+  --color-base-100: #1e293b; /* Slate 800 */
+  --color-base-200: #0f172a; /* Slate 900 */
+  --color-base-300: #020617; /* Slate 950 */
+  --color-base-content: #f8fafc;
+  --color-secondary: #3b82f6; /* Blue 500 */
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
 }
 
 @plugin "daisyui/theme" {
@@ -15,6 +21,15 @@
   prefersdark: false; /* set as default light mode (prefers-color-scheme:light) */
   color-scheme: light; /* color of browser-provided UI */
 
-  --color-primary: #c72730;
-  --color-secondary: #3b71ca;
+  --color-primary: #be123c; /* Rose 700 */
+  --color-primary-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f9; /* Slate 100 */
+  --color-base-300: #e2e8f0; /* Slate 200 */
+  --color-base-content: #0f172a;
+  --color-secondary: #2563eb; /* Blue 600 */
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
 }

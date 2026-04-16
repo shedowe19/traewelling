@@ -39,7 +39,7 @@ class UserFactory extends Factory
             //
         })->afterCreating(function (User $user) {
             try {
-                new PrivacyPolicyRepository()->acceptPrivacyPolicy($user);
+                (new PrivacyPolicyRepository)->acceptPrivacyPolicy($user);
             } catch (\Throwable $exception) {
                 // do nothing
             }

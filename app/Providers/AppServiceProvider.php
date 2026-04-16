@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Passport::refreshTokensExpireIn(CarbonInterval::days(30));
         Passport::personalAccessTokensExpireIn(CarbonInterval::days(90));
 
-        $dataProvider = new DataProviderBuilder()->build();
+        $dataProvider = (new DataProviderBuilder)->build();
         $this->app->instance(DataProviderInterface::class, $dataProvider);
     }
 

@@ -37,11 +37,23 @@
 
     <style>
         html { overflow: hidden; }
-        body { background: transparent; margin: 0; }
+        body { background: transparent !important; margin: 0; padding: 1rem; }
         /* Negative top margins are used to overlap with the navbar in the full layout.
            In the embed layout there is no navbar, so they push content above the viewport. */
         .mt-n4, .mt-n5 { margin-top: 0 !important; }
         .fab-container { display: none !important; }
+        #vue-app {
+            background: transparent !important;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)) drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+        }
+        .card.status {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem !important;
+        }
+        html.dark .card.status {
+            background-color: rgba(30, 41, 59, 0.95) !important;
+        }
     </style>
 
     @yield('head')

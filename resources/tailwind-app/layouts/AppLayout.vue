@@ -2,16 +2,16 @@
     <div class="min-h-screen flex flex-col bg-base-300 drawer drawer-end">
         <input id="my-drawer-5" type="checkbox" class="drawer-toggle" />
         <!-- Navigation -->
-        <div class="navbar bg-primary shadow-lg drawer-content">
+        <div class="navbar bg-primary shadow-md sticky top-0 z-50 drawer-content text-primary-content">
             <div class="navbar-start">
-                <a href="/" class="btn btn-ghost text-xl text-white">
+                <a href="/" class="btn btn-ghost text-xl rounded-full">
                     <img src="/images/icons/logo.svg" alt="Träwelling Logo" class="w-10 h-10 mr-2" />
                     Träwelling
                 </a>
             </div>
 
-            <div class="navbar-center hidden text-white lg:flex">
-                <ul class="menu menu-horizontal px-1">
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 gap-2">
                     <li v-for="link in links" v-show="link.condition === undefined || link.condition" :key="link.name">
                         <a v-if="link.legacy" :href="link.route as string">
                             <component :is="link.icon" class="inline-block w-6 h-6 mr-2" />
@@ -25,11 +25,11 @@
                 </ul>
             </div>
 
-            <div class="navbar-end">
+            <div class="navbar-end gap-2">
                 <router-link
                     v-if="user.authenticated"
                     :to="{ name: 'notifications' }"
-                    class="btn btn-ghost btn-sm text-white flex mr-1"
+                    class="btn btn-ghost btn-sm flex rounded-full"
                 >
                     <div class="relative">
                         <div class="indicator size-5">
@@ -73,8 +73,8 @@
                     </ul>
                 </div>
                 <div class="lg:hidden">
-                    <label for="my-drawer-5" class="drawer-button btn btn-ghost">
-                        <Menu class="inline-block w-6 h-6 text-white" />
+                    <label for="my-drawer-5" class="drawer-button btn btn-ghost btn-circle">
+                        <Menu class="inline-block w-6 h-6" />
                     </label>
                 </div>
             </div>
@@ -82,17 +82,17 @@
 
         <!-- Main content -->
         <main
-            class="flex-1 w-full min-h-screen"
-            :class="{ 'px-4 sm:px-6 lg:px-8': !legacy, 'max-w-7xl mx-auto py-8': !fullscreen }"
+            class="flex-1 w-full min-h-screen pb-12"
+            :class="{ 'px-4 sm:px-6 lg:px-8': !legacy, 'max-w-7xl mx-auto pt-6 pb-12': !fullscreen }"
         >
             <slot></slot>
         </main>
 
-        <footer class="footer sm:footer-horizontal bg-primary text-white p-10">
+        <footer class="footer sm:footer-horizontal bg-primary text-primary-content p-10 shadow-inner">
             <aside>
-                <div class="flex items-center space-x-2 mb-4">
+                <div class="flex items-center space-x-2 mb-4 drop-shadow-sm">
                     <img src="/images/icons/logo.svg" class="h-12 w-12" alt="Träwelling Logo" />
-                    <h1 class="text-2xl text-bold">#Träwelling</h1>
+                    <h1 class="text-2xl font-bold">#Träwelling</h1>
                 </div>
                 <p>
                     {{ trans('footer.developed') }}
@@ -131,9 +131,13 @@
                 <LanguageSelector />
             </nav>
         </footer>
-        <div class="drawer-side">
+        <div class="drawer-side z-50">
             <label for="my-drawer-5" aria-label="close sidebar" class="drawer-overlay"></label>
-            <ul class="menu bg-base-200 min-h-full w-80 p-4">
+            <ul class="menu bg-base-100 min-h-full w-80 p-4 gap-2 drop-shadow-2xl">
+                <li class="mb-4 ml-4 font-bold text-lg text-base-content/80 flex flex-row items-center gap-2">
+                    <img src="/images/icons/logo.svg" alt="Träwelling Logo" class="w-8 h-8 opacity-80" />
+                    Träwelling
+                </li>
                 <!-- Sidebar content here -->
                 <li v-for="link in links" v-show="link.condition === undefined || link.condition" :key="link.name">
                     <a v-if="link.legacy" :href="link.route as string">
@@ -156,13 +160,13 @@
                         {{ trans(link.name) }}
                     </router-link>
                 </li>
-                <li class="border-t border-base-300 mt-1 pt-1">
-                    <button @click="logout">
+                <li class="border-t border-base-300 mt-2 pt-2">
+                    <button class="text-error" @click="logout">
                         <LogOut class="inline-block w-6 h-6 mr-2" />
                         {{ trans('menu.logout') }}
                     </button>
                 </li>
-                <li class="p-0 mt-auto">
+                <li class="p-0 mt-auto flex flex-col gap-2 border-t border-base-300 pt-4">
                     <DarkModeSelector />
                 </li>
                 <li class="p-0 bottom-0">
